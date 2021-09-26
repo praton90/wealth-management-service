@@ -1,0 +1,34 @@
+# Actuator properties
+info:
+  build:
+    groupId: "@project.groupId@"
+    artifactId: "@project.artifactId@"
+    version: "@project.version@"
+    name: "@project.name@"
+    description: "@project.description@"
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:54321/wealth_management_db}
+    username: ${SPRING_DATASOURCE_USERNAME:username}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
+  flyway:
+    user: ${SPRING_DATASOURCE_USERNAME:username}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
+
+
+
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      portfolio-service:
+        connectTimeout: 3000
+        readTimeout: 5000
+
+portfolio-service:
+  url: https://portfolio-service
+
+task-executor:
+  thread-pool-size: 10
